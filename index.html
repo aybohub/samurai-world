@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAMURAI WORLD — Nasıl oynarım?</title>
+<meta name="description" content="Kick chat'ten oynanan samuray MMORPG'si: komutlar, ilk adımlar, bölgeler ve ipuçları.">
+<meta property="og:title" content="SAMURAI WORLD — Nasıl oynarım?">
+<meta property="og:description" content="Chat'e !yakala yaz, karakterin oluşsun. Yaratık yakala, savaş, maden kaz, eşya üret.">
+<style>
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-ext-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; unicode-range: U+0100-02AF; }
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-ext-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0100-02AF; }
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-900-normal.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Sans'; src: url('fonts/roboto-latin-ext-900-normal.woff2') format('woff2'); font-weight: 900; font-display: swap; unicode-range: U+0100-02AF; }
+:root { --bg: #0c0507; --panel: #170a0d; --line: #3a1219; --ink: #f4ece6; --muted: #b9a7a2; --red: #e3243b; --gold: #f2c14e; --code: #2a0d13; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.55 'Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+a { color: var(--gold); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px 64px; }
+header.hero { position: relative; overflow: hidden; padding: 56px 16px 40px; text-align: center; border-bottom: 1px solid var(--line);
+  background: radial-gradient(circle at 50% 120%, rgba(227,36,59,.35), transparent 55%), radial-gradient(circle at 50% 40%, rgba(227,36,59,.18) 0 120px, transparent 121px), var(--bg); }
+.kanji { font-size: 22px; letter-spacing: .4em; color: var(--gold); opacity: .9; }
+h1 { margin: 6px 0 8px; font-weight: 900; font-size: clamp(34px, 7vw, 64px); letter-spacing: .04em; line-height: 1.05; }
+h1 span { color: var(--red); }
+.lead { max-width: 640px; margin: 0 auto; color: var(--muted); font-size: 18px; }
+.status { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; border: 1px solid; }
+.status.on { color: #5be38a; border-color: rgba(91,227,138,.5); background: rgba(91,227,138,.08); }
+.status.off { color: #ff8a96; border-color: rgba(255,138,150,.45); background: rgba(255,138,150,.07); }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+h2 { font-weight: 900; font-size: 26px; margin: 44px 0 14px; letter-spacing: .02em; }
+h2 small { display: block; font-weight: 400; font-size: 15px; color: var(--muted); letter-spacing: 0; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; counter-reset: s; }
+.steps li { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px 16px 58px; position: relative; counter-increment: s; }
+.steps li::before { content: counter(s); position: absolute; left: 14px; top: 14px; width: 30px; height: 30px; border-radius: 8px; background: var(--red); color: #fff; font-weight: 900; display: grid; place-items: center; }
+.steps b { display: block; margin-bottom: 2px; }
+code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; background: var(--code); color: var(--gold); padding: 1px 7px; border-radius: 6px; font-size: .92em; white-space: nowrap; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.card h3 { margin: 0 0 10px; font-size: 18px; font-weight: 900; }
+dl { margin: 0; }
+.row { padding: 8px 0; border-top: 1px solid rgba(255,255,255,.05); }
+.row:first-child { border-top: 0; }
+dt { margin-bottom: 2px; }
+dd { margin: 0; color: var(--muted); font-size: 15px; }
+.tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tip { background: var(--panel); border-left: 3px solid var(--gold); border-radius: 8px; padding: 12px 14px; color: var(--muted); }
+.tip b { color: var(--ink); }
+ul.rar { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; }
+ul.rar li { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; flex-wrap: wrap; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.muted { color: var(--muted); font-size: 14px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 460px; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.05); }
+th { background: #1d0b10; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+footer { margin-top: 48px; color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="kanji" aria-hidden="true">侍の世界</div>
+  <h1>SAMURAI <span>WORLD</span></h1>
+  <p class="lead">Kick chat'ten oynanan samuray MMORPG'si. Yaratık yakala, savaş, maden kaz, balık tut, eşya üret ve sıralamada yüksel. Web sayfası açman gerekmez — her şey chat komutlarıyla.</p>
+  <div class="status on"><i></i>Yayın sırasında oynanır — chat'e <code>!nasıloynarım</code> yaz</div>
+</header>
+<main class="wrap">
+  <h2>30 saniyede başla <small>İlk oyun komutunu yazdığın an karakterin otomatik oluşur.</small></h2>
+  <ol class="steps">
+    <li><b>Chat'e <code>!yakala</code> yaz</b>Karakterin oluşur: 50 altın, Taş Kazma, Bambu Olta, Taş Balta ve 2 Sağlık İksiri ile Başlangıç Köyü'ndesin.</li>
+    <li><b><code>!kes</code> ile savaş</b>Yaratıkları yen, EXP, altın ve ganimet topla. Canın azalınca <code>!iyiles</code>.</li>
+    <li><b>Kaynak topla</b><code>!maden</code> <code>!balik</code> <code>!odun</code> <code>!topla</code> — her birinin kendi mesleği var.</li>
+    <li><b>Üret ve güçlen</b><code>!erit</code> ile külçe, <code>!uret</code> ile silah ve alet yap, <code>!giy</code> ile kuşan. Seviye 5'te <code>!git Kızıl Orman</code>.</li>
+  </ol>
+
+  <h2>Komutlar <small>Büyük/küçük harf ve Türkçe karakter fark etmez: <code>!yardım</code> = <code>!yardim</code></small></h2>
+  <div class="grid">
+    <section class="card">
+      <h3><span aria-hidden="true">🏯</span> Karakterin</h3>
+      <dl><div class="row"><dt><code>!lvl</code></dt><dd>Seviyen, EXP&#39;in, savaş gücün, canın ve altının.</dd></div><div class="row"><dt><code>!profil</code></dt><dd>Karakterinin özeti: istatistikler, bölge, silah, koleksiyon.</dd></div><div class="row"><dt><code>!durum</code></dt><dd>Canın, baygın olup olmadığın ve hangi komutun ne zaman hazır olacağı.</dd></div><div class="row"><dt><code>!meslekler</code></dt><dd>9 mesleğin seviyesi (madencilik, balıkçılık, demircilik…).</dd></div><div class="row"><dt><code>!istatistik</code></dt><dd>Kaç yaratık yakaladın, kaç savaş kazandın, kaç maden kazdın…</dd></div><div class="row"><dt><code>!para</code></dt><dd>Altının.</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">⚔️</span> Yaratıklar ve savaş</h3>
+      <dl><div class="row"><dt><code>!yakala</code></dt><dd>Bulunduğun bölgede rastgele bir yaratıkla karşılaşır ve yakalamayı denersin. Çantanda Yem varsa otomatik kullanılır, şansı artırır.</dd></div><div class="row"><dt><code>!kes</code></dt><dd>Bölgedeki bir yaratıkla savaşırsın. Kazanırsan EXP, altın ve ganimet. İstersen hedef seç: !kes Kızıl Kurt</dd></div><div class="row"><dt><code>!iyiles</code></dt><dd>Çantandaki en uygun iksir/yemekle canını doldurur.</dd></div><div class="row"><dt><code>!koleksiyon</code></dt><dd>Yakaladığın yaratık türleri (toplam 61 tür var).</dd></div><div class="row"><dt><code>!yaratik Kitsune</code></dt><dd>Bir yaratığın bölgesi, nadirliği, yakalama şansı ve düşürdükleri.</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">⛏️</span> Toplama</h3>
+      <dl><div class="row"><dt><code>!maden</code></dt><dd>Kazmanla cevher kazarsın (taştan Kadim Samuray Çeliği&#39;ne).</dd></div><div class="row"><dt><code>!balik</code></dt><dd>Oltanla balık tutarsın (sazandan efsanevi Ejder Koi&#39;ye).</dd></div><div class="row"><dt><code>!odun</code></dt><dd>Baltanla odun kesersin.</dd></div><div class="row"><dt><code>!topla</code></dt><dd>Şifalı ot, solucan, nadir çiçek ve kök toplarsın.</dd></div><div class="row"><dt><code>!kaynaklar</code></dt><dd>Bulunduğun bölgede neler çıkıyor, hangileri kilitli (🔒).</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">🎒</span> Envanter ve ekipman</h3>
+      <dl><div class="row"><dt><code>!envanter</code></dt><dd>Çantan. Sayfa: !envanter 2 · Kategori: !envanter cevher</dd></div><div class="row"><dt><code>!esya Kurt Dişi</code></dt><dd>Bir eşyanın ne işe yaradığı, değeri, nereden çıktığı.</dd></div><div class="row"><dt><code>!ekipman</code></dt><dd>Kuşandıkların ve aletlerin.</dd></div><div class="row"><dt><code>!giy Demir Kılıç</code></dt><dd>Silah, zırh, aksesuar ya da daha iyi bir kazma/olta/balta kuşanırsın.</dd></div><div class="row"><dt><code>!cikar silah</code></dt><dd>Kuşandığını çıkarıp çantaya koyarsın.</dd></div><div class="row"><dt><code>!kullan Sağlık İksiri</code></dt><dd>İksir, yemek ya da çanta (yuva artırır) kullanırsın.</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">🔨</span> Üretim</h3>
+      <dl><div class="row"><dt><code>!erit demir</code></dt><dd>Cevherleri külçeye çevirir (Demir Cevheri ×2 + Kömür → Demir Külçe). Tümü için: !erit demir hepsi</dd></div><div class="row"><dt><code>!uret Demir Kılıç</code></dt><dd>Malzemelerinle eşya üretirsin. Adet: !uret Sağlık İksiri 3</dd></div><div class="row"><dt><code>!tarifler</code></dt><dd>Açık tariflerin (✅ malzemen hazır). Filtre: !tarifler demircilik | zanaat | simya | erit</dd></div><div class="row"><dt><code>!tarif Samuray Katana</code></dt><dd>Bir tarifin malzemeleri ve sende kaç tane olduğu.</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">💰</span> Ticaret</h3>
+      <dl><div class="row"><dt><code>!magaza</code></dt><dd>Köy tüccarının satışları (iksir, yem, kömür, başlangıç aletleri, çanta).</dd></div><div class="row"><dt><code>!al Sağlık İksiri 3</code></dt><dd>Mağazadan satın alırsın.</dd></div><div class="row"><dt><code>!sat Kurt Dişi 5</code></dt><dd>Tüccara satarsın. Hepsini: !sat Kurt Dişi hepsi</dd></div><div class="row"><dt><code>!ver @arkadaş altın 100</code></dt><dd>Başka oyuncuya altın verirsin (seviye 5+). Eşya: !ver @arkadaş Kurt Dişi 2</dd></div><div class="row"><dt><code>!onay</code></dt><dd>Değerli bir satış/verme/atma işlemini onaylarsın (30 sn içinde).</dd></div></dl>
+    </section>
+    <section class="card">
+      <h3><span aria-hidden="true">🗺️</span> Dünya ve sıralama</h3>
+      <dl><div class="row"><dt><code>!harita</code></dt><dd>Tüm bölgeler ve seviye şartları.</dd></div><div class="row"><dt><code>!git Kızıl Orman</code></dt><dd>Başka bölgeye seyahat (yeni bölge keşfi EXP verir).</dd></div><div class="row"><dt><code>!bolge</code></dt><dd>Bulunduğun bölgenin yaratıkları ve keşif durumun.</dd></div><div class="row"><dt><code>!top</code></dt><dd>Sıralamalar: !top seviye | zengin | maden | balik | odun | yakala | savas | boss</dd></div><div class="row"><dt><code>!yardim</code></dt><dd>Chat&#39;te kısa komut listesi. Konu: !yardim savas | toplama | uretim | ticaret | dunya</dd></div></dl>
+    </section></div>
+
+  <h2>İpuçları</h2>
+  <div class="tips">
+    <div class="tip"><b>Bekleme süreleri:</b> <code>!yakala</code> 10 sn, <code>!kes</code> 8 sn, toplama komutları 10 sn. Spam yapmak işe yaramaz; süre kişiye özeldir.</div>
+    <div class="tip"><b>Yenilmek korkutmasın:</b> canın 0 olursa 60 sn baygın kalırsın, eşya ya da altın kaybetmezsin. Can zamanla kendiliğinden dolar.</div>
+    <div class="tip"><b>Daha iyi alet = nadir kaynak:</b> Demir Kazma, Çelik Olta gibi aletler kilitli (🔒) cevher ve balıkları açar. <code>!kaynaklar</code> ile gör.</div>
+    <div class="tip"><b>Yem kullan:</b> çantanda Yem varsa <code>!yakala</code> otomatik kullanır. Nadir yaratıklar için Nadir Yaratık Yemi daha etkili.</div>
+    <div class="tip"><b>Meslekler ayrı ilerler:</b> savaşta zayıfken usta madenci olabilirsin. 9 meslek: savaş, yakalama, madencilik, balıkçılık, odunculuk, toplayıcılık, demircilik, zanaat, simya.</div>
+    <div class="tip"><b>İlerlemen kalıcı:</b> yayın kapansa da karakterin, eşyaların ve altının saklanır. Kick hesabına bağlıdır.</div>
+  </div>
+
+  <h2>Nadirlik <small>Nadir yaratık ya da eşya bulduğunda yayında ekrana çıkar.</small></h2>
+  <ul class="rar"><li><span class="dot" style="--c:#cfd6de"></span><b style="color:#cfd6de">Yaygın</b><span class="muted">yakalama ~%70 · 21 yaratık</span></li><li><span class="dot" style="--c:#5be38a"></span><b style="color:#5be38a">Sıradışı</b><span class="muted">yakalama ~%50 · 14 yaratık</span></li><li><span class="dot" style="--c:#4aa8ff"></span><b style="color:#4aa8ff">Nadir</b><span class="muted">yakalama ~%32 · 9 yaratık</span></li><li><span class="dot" style="--c:#b16bff"></span><b style="color:#b16bff">Epik</b><span class="muted">yakalama ~%18 · 8 yaratık</span></li><li><span class="dot" style="--c:#ffae3b"></span><b style="color:#ffae3b">Efsanevi</b><span class="muted">yakalama ~%8 · 6 yaratık</span></li><li><span class="dot" style="--c:#ff3b5c"></span><b style="color:#ff3b5c">Mitik</b><span class="muted">yakalama ~%3 · 3 yaratık</span></li></ul>
+
+  <h2>Dünya <small>12 bölge · 61 yaratık · 151 eşya · 48 tarif</small></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Bölge</th><th class="num">Seviye</th><th class="num">Yaratık</th><th class="num">Kaynak</th></tr></thead>
+    <tbody><tr><td>🏯 Başlangıç Köyü</td><td class="num">1</td><td class="num">6</td><td class="num">12</td></tr><tr><td>🍁 Kızıl Orman</td><td class="num">5</td><td class="num">5</td><td class="num">17</td></tr><tr><td>🌫️ Sisli Vadi</td><td class="num">10</td><td class="num">5</td><td class="num">22</td></tr><tr><td>⛏️ Eski Maden</td><td class="num">15</td><td class="num">5</td><td class="num">26</td></tr><tr><td>🌊 Ruh Gölü</td><td class="num">22</td><td class="num">5</td><td class="num">29</td></tr><tr><td>🎋 Bambu Ormanı</td><td class="num">30</td><td class="num">5</td><td class="num">26</td></tr><tr><td>🏔️ Kara Dağlar</td><td class="num">38</td><td class="num">5</td><td class="num">25</td></tr><tr><td>❄️ Buz Diyarı</td><td class="num">46</td><td class="num">5</td><td class="num">23</td></tr><tr><td>🐉 Ejderha Vadisi</td><td class="num">55</td><td class="num">5</td><td class="num">19</td></tr><tr><td>⛩️ Kadim Samuray Tapınağı</td><td class="num">65</td><td class="num">5</td><td class="num">16</td></tr><tr><td>🌑 Gölge Krallığı</td><td class="num">78</td><td class="num">5</td><td class="num">16</td></tr><tr><td>🌟 Efsanevi Ejderha Diyarı</td><td class="num">90</td><td class="num">5</td><td class="num">15</td></tr></tbody>
+  </table></div>
+
+  <h2>Yayındaki diğer oyunlar</h2>
+  <div class="grid">
+    <section class="card"><h3>👹 Boss Raid</h3><dl>
+      <div class="row"><dt><code>!vur</code></dt><dd>Boss ekrandayken saldır. Boss aboneliklerle doğar.</dd></div>
+      <div class="row"><dt><code>!boss</code></dt><dd>Boss'a kaç abone kaldığını gösterir.</dd></div>
+      <div class="row"><dt><code>!bossrank</code></dt><dd>Tüm zamanların en çok hasar veren 5 samurayı. Boss'a katılanlar SAMURAI WORLD'de de EXP ve altın kazanır.</dd></div>
+    </dl></section>
+    <section class="card"><h3>⚔️ 1v1 Düello</h3><dl>
+      <div class="row"><dt><code>!vs kullanıcı</code></dt><dd>Birini düelloya çağır; o <code>!kabul</code> yazınca savaş ekranda oynar.</dd></div>
+      <div class="row"><dt><code>!top5</code></dt><dd>En çok düello kazananlar.</dd></div>
+    </dl></section>
+  </div>
+
+  <footer>SAMURAI WORLD · Sonuçlar sunucuda hesaplanır, hile yapılamaz.</footer>
+</main>
+</body>
+</html>
