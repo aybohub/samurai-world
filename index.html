@@ -28,6 +28,8 @@ h1 span { color: var(--red); }
 .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; border: 1px solid; }
 .status.on { color: #5be38a; border-color: rgba(91,227,138,.5); background: rgba(91,227,138,.08); }
 .status.off { color: #ff8a96; border-color: rgba(255,138,150,.45); background: rgba(255,138,150,.07); }
+.wikibtn { display: inline-block; margin-top: 14px; padding: 10px 18px; border-radius: 12px; background: var(--red); color: #fff; font-weight: 900; text-decoration: none; }
+.wikibtn:hover { filter: brightness(1.1); }
 .status i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 h2 { font-weight: 900; font-size: 26px; margin: 44px 0 14px; letter-spacing: .02em; }
 h2 small { display: block; font-weight: 400; font-size: 15px; color: var(--muted); letter-spacing: 0; }
@@ -68,6 +70,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: 14px; text-align: cen
   <h1>SAMURAI <span>WORLD</span></h1>
   <p class="lead">Kick chat'ten oynanan samuray MMORPG'si. Yaratık yakala, savaş, maden kaz, avlan, eşya üret ve geliştir, zindanlara gir, klan kur ve sıralamada yüksel. Web sayfası açman gerekmez — her şey chat komutlarıyla.</p>
   <div class="status on"><i></i>Yayın sırasında oynanır — chat'e <code>!nasıloynarım</code> yaz</div>
+  <div><a class="wikibtn" href="wiki.html">📖 Wiki: tüm yaratıklar, eşyalar ve tarifler →</a></div>
 </header>
 <main class="wrap">
   <h2>30 saniyede başla <small>İlk oyun komutunu yazdığın an karakterin otomatik oluşur.</small></h2>
